@@ -1,10 +1,10 @@
 export const templateAssets = {
-    botanical: '/images/cards/starlight-paper-v1.png',
-    arch: '/images/cards/rose-bow-paper-v2.png',
-    ribbon: '/images/cards/rose-hearts-paper-v2.png',
-    check: '/images/cards/botanical-paper-v3.png',
-    garden: '/images/cards/pearl-bubbles-paper-v2.png',
-    frame: '/images/cards/golden-sun-paper-v2.png',
+    botanical: '/images/cards/starlight-paper-v1.png?v=3',
+    arch: '/images/cards/rose-bow-paper-v2.png?v=3',
+    ribbon: '/images/cards/rose-hearts-paper-v2.png?v=4',
+    check: '/images/cards/botanical-paper-v3.png?v=4',
+    garden: '/images/cards/pearl-bubbles-paper-v2.png?v=3',
+    frame: '/images/cards/golden-sun-paper-v2.png?v=3',
 };
 export const solidTemplates = {
     'plain-ivory': '#F5F2ED',
