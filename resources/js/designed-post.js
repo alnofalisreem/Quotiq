@@ -51,10 +51,11 @@ export function showDesignedPost(article, body, post) {
         if (text) {
             Object.assign(text.style, {
                 position: 'absolute',
-                left: `clamp(40%, ${layout.textX}%, 60%)`,
-                top: `clamp(22.5%, ${layout.textY}%, 77.5%)`,
-                transform: 'translate(-50%, -50%)',
-                width: '80%',
+                left: `${layout.textX}%`,
+                top: `${layout.textY}%`,
+                transform: `translate(-${layout.textX}%, -${layout.textY}%)`,
+                width: 'max-content',
+                maxWidth: '80%',
                 maxHeight: 'none',
                 margin: '0',
                 overflow: 'visible',

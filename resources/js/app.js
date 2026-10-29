@@ -137,16 +137,26 @@ document.querySelectorAll('[data-category]').forEach((button) =>
         filterQuotes();
     }),
 );
-document
-    .querySelector('.carousel-arrow.next')
-    ?.addEventListener('click', () =>
-        grid.scrollBy({ left: grid.clientWidth * 0.7, behavior: 'smooth' }),
-    );
-document
-    .querySelector('.carousel-arrow.previous')
-    ?.addEventListener('click', () =>
-        grid.scrollBy({ left: -grid.clientWidth * 0.7, behavior: 'smooth' }),
-    );
+function moveQuoteCarousel(direction) {
+    if (!grid || grid.classList.contains('expanded')) return;
+    const cards = [...grid.querySelectorAll('.quote-card:not([hidden])')];
+    if (cards.length < 2) return;
+    const start = cards[0].offsetLeft;
+    const step = cards[1].offsetLeft - start;
+    if (step <= 0) return;
+    const gap = parseFloat(getComputedStyle(grid).columnGap) || 0;
+    const pageSize = Math.max(1, Math.round((grid.clientWidth + gap) / step));
+    const current = Math.round(grid.scrollLeft / step);
+    const lastPage = Math.max(0, cards.length - pageSize);
+    const next = Math.max(0, Math.min(lastPage, current + direction * pageSize));
+    grid.scrollTo({ left: cards[next].offsetLeft - start, behavior: 'smooth' });
+}
+
+document.querySelector('.carousel-arrow.next')
+    ?.addEventListener('click', () => moveQuoteCarousel(1));
+document.querySelector('.carousel-arrow.previous')
+    ?.addEventListener('click', () => moveQuoteCarousel(-1));
+
 document.querySelector('#view-all')?.addEventListener('click', (event) => {
     const expanded = grid.classList.toggle('expanded');
     event.currentTarget.textContent = expanded ? 'Show less ↑' : 'View all →';
