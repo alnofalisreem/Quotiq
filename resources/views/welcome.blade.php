@@ -63,8 +63,7 @@
                     <h2 id="explore-heading">Explore Quotes<span class="orange-text">.</span>
                     </h2>
                 </div>
-                <button class="text-button" id="view-all" aria-expanded="false"><span data-view-all-label>View all</span> <x-icon
-                        name="arrow" />
+                <button class="text-button" id="view-all" aria-expanded="false"><span data-view-all-label>View all</span>
                 </button>
             </div>
             <div class="filter-row" aria-label="Filter quotes by category">
@@ -92,7 +91,7 @@
     <dialog id="auth-dialog" class="auth-dialog" aria-label="Log in to continue">
         <button class="dialog-close icon-button" aria-label="Close dialog">×</button>
         <p id="auth-dialog-message">Log in to save your favorites and create something beautiful.</p>
-        <a class="button button-primary" href="{{ url('/login') }}">Log in <x-icon name="arrow" />
+        <a class="button button-primary" href="{{ url('/login') }}">Log in
         </a>
         <p class="dialog-signup">New around here? <a href="{{ url('/signup') }}">Create an account</a>
         </p>
