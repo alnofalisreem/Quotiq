@@ -83,7 +83,7 @@ function filterQuotes() {
     if (term && window.innerWidth <= 1100) {
         grid.classList.add('expanded');
         const viewAll = document.querySelector('#view-all');
-        viewAll.textContent = 'Show less ↑';
+        viewAll.querySelector('[data-view-all-label]').textContent = 'Show less';
         viewAll.setAttribute('aria-expanded', 'true');
     }
     let count = 0;
@@ -159,7 +159,9 @@ document.querySelector('.carousel-arrow.previous')
 
 document.querySelector('#view-all')?.addEventListener('click', (event) => {
     const expanded = grid.classList.toggle('expanded');
-    event.currentTarget.textContent = expanded ? 'Show less ↑' : 'View all →';
+    event.currentTarget.querySelector('[data-view-all-label]').textContent = expanded
+        ? 'Show less'
+        : 'View all';
     event.currentTarget.setAttribute('aria-expanded', String(expanded));
     document
         .querySelectorAll('.carousel-arrow')

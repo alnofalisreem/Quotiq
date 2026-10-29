@@ -63,7 +63,7 @@
                     <h2 id="explore-heading">Explore Quotes<span class="orange-text">.</span>
                     </h2>
                 </div>
-                <button class="text-button" id="view-all" aria-expanded="false">View all <x-icon
+                <button class="text-button" id="view-all" aria-expanded="false"><span data-view-all-label>View all</span> <x-icon
                         name="arrow" />
                 </button>
             </div>

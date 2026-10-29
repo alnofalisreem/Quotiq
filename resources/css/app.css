@@ -537,6 +537,13 @@ p {
     border: 0;
     padding: 6px 0;
 }
+#view-all .icon {
+    width: 21px;
+    height: 21px;
+}
+#view-all[aria-expanded='true'] .icon {
+    transform: rotate(-90deg);
+}
 .filter-row {
     display: flex;
     align-items: center;
