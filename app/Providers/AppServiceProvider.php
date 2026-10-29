@@ -20,6 +20,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        if ($this->app->environment('production')) {
+            \Illuminate\Support\Facades\URL::forceScheme('https');
+        }
+
         // Windows' development server needs a writable location to buffer large JSON bodies.
         if (PHP_OS_FAMILY !== 'Windows' || ! in_array('serve', $_SERVER['argv'] ?? [], true)) {
             return;
