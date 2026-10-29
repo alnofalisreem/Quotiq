@@ -17,4 +17,5 @@ PHP · JavaScript · HTML · CSS · Laravel · Blade · Vite · SQLite · Postgr
 
 ## Screenshots
 <img width="1920" height="1080" alt="Screenshot (318)" src="https://github.com/user-attachments/assets/d707c656-a2f0-4a6b-bed3-9727e9f8955c" />
-<img width="1920" height="1080" alt="Screenshot (319)" src="https://github.com/user-attachments/assets/1f26b216-e007-41f2-9412-30440997d57c" />
+<img width="1920" height="1080" alt="Screenshot (323)" src="https://github.com/user-attachments/assets/5299fd78-3879-4d3d-b885-091a4b2e04df" />
+
