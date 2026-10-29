@@ -117,22 +117,22 @@
                         <option value="Arial">Clean sans</option>
                         <option value="Courier New">Typewriter</option>
                     </select>
-                    <label class="control-label" for="studio-size">Text size <output
-                            id="size-output">64</output>
-                    </label>
-                    <input id="studio-size" type="range" min="32" max="80"
-                        value="64">
                     <select id="studio-position" hidden aria-hidden="true">
                         <option value="top">Top</option>
                         <option value="middle" selected>Middle</option>
                         <option value="bottom">Bottom</option>
                     </select>
                     <fieldset class="layer-controls" id="text-layout-controls">
-                        <legend class="control-label">Text position</legend>
+                        <legend class="control-label">Text</legend>
                         <label for="text-x">Left / right</label>
                         <input id="text-x" type="range" min="0" max="100" value="50">
                         <label for="text-y">Up / down</label>
                         <input id="text-y" type="range" min="0" max="100" value="35">
+                        <label class="control-label" for="studio-size">Text size <output
+                                id="size-output">64</output>
+                        </label>
+                        <input id="studio-size" type="range" min="32" max="80"
+                            value="64">
                     </fieldset>
                     <fieldset class="layer-controls" id="drawing-layout-controls" hidden>
                         <legend class="control-label">Drawing</legend>
