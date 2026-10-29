@@ -229,10 +229,7 @@ button:disabled {
     display: grid;
     grid-template-columns: 1.06fr 1fr;
     align-items: center;
-    min-height: 505px;
-    gap: 25px;
     position: relative;
-    padding: 30px 0 36px;
 }
 .eyebrow {
     font-size: 11px;
@@ -402,8 +399,6 @@ p {
 }
 .art-note {
     position: absolute;
-    top: 36px;
-    right: -10px;
     font:
         italic 17px/1.3 Georgia,
         serif;
@@ -414,8 +409,6 @@ p {
 }
 .art-note span {
     display: block;
-    font-size: 55px;
-    line-height: 1;
     transform: rotate(12deg);
 }
 .art-orbit {
@@ -464,7 +457,6 @@ p {
     font:
         500 10px Arial,
         sans-serif;
-    color: #b34818;
     display: flex;
     gap: 9px;
     align-items: center;
@@ -1036,7 +1028,6 @@ p {
         margin-bottom: 17px;
     }
     .hero-description {
-        font-size: 14px;
         max-width: 440px;
     }
     .hero-actions {
@@ -1065,11 +1056,6 @@ p {
     }
     .floating-ivory {
         left: 6%;
-    }
-    .art-note {
-        right: -7px;
-        top: 24px;
-        font-size: 14px;
     }
     .art-spark {
         right: -6px;
@@ -1102,9 +1088,6 @@ p {
     .daily-content > p {
         font-size: 11px;
     }
-    .section-heading h2 {
-        font-size: 29px;
-    }
     .section-eyebrow {
         font-size: 8px;
         letter-spacing: 1.5px;
@@ -1119,7 +1102,6 @@ p {
         gap: 6px;
     }
     .filter-chip {
-        font-size: 9px;
         padding: 7px 10px;
     }
     .quote-grid {
@@ -1493,25 +1475,18 @@ p {
 @media (max-width: 760px) {
     .account-screen {
         min-height: calc(100svh - 80px);
-        padding: 38px 22px 50px;
-    }
-    .account-content {
-        max-width: 480px;
     }
     .account-intro {
-        padding-left: 19px;
         margin-bottom: 27px;
     }
     .account-intro h1 {
         font-size: 57px;
-        letter-spacing: -2.4px;
     }
     .account-intro .eyebrow {
         font-size: 10px;
         margin-bottom: 15px;
     }
     .account-panel {
-        padding: 26px 23px;
         margin-left: 0;
         border-radius: 21px;
     }
@@ -1574,30 +1549,6 @@ body:has(.account-screen) #mobile-nav a[href$='/signup'] {
     display: none;
 }
 /* Keep the handwritten caption clear of the green card. */
-.art-note {
-    top: 4px;
-    right: -10px;
-    font-size: 15px;
-}
-.art-note span {
-    font-size: 40px;
-}
-@media (max-width: 1000px) and (min-width: 761px) {
-    .art-note {
-        top: -12px;
-        right: -60px;
-    }
-}
-@media (max-width: 760px) {
-    .art-note {
-        top: -30px;
-        right: 0;
-        font-size: 13px;
-    }
-    .art-note span {
-        font-size: 35px;
-    }
-}
 @media (min-width: 761px) {
     .art-note {
         transform: translate(8px, 14px) rotate(6deg);
@@ -1723,7 +1674,6 @@ body:has(.account-screen) #mobile-nav a[href$='/signup'] {
     border-radius: 13px;
     width: max-content;
     max-width: 100%;
-    margin-bottom: 24px;
 }
 .workspace-tabs button {
     background: none;
@@ -2026,10 +1976,8 @@ body:has(.account-screen) #mobile-nav a[href$='/signup'] {
     align-items: center;
     flex-direction: column;
     gap: 16px;
-    padding: 20px;
     background: #101010;
     border-radius: 15px;
-    align-self: start;
 }
 .preview-label {
     color: #aaa49a;
@@ -2138,13 +2086,10 @@ body:has(.preview-shell) .account-links {
         line-height: 1.7;
     }
     .workspace-tabs {
-        width: 100%;
         gap: 3px;
         padding: 4px;
     }
     .workspace-tabs button {
-        flex: 1;
-        font-size: 10px;
         padding: 11px 7px;
     }
     .workspace-tabs button span {
@@ -2153,17 +2098,9 @@ body:has(.preview-shell) .account-links {
     .workspace-grid,
     .studio-grid {
         grid-template-columns: 1fr;
-        gap: 27px;
-    }
-    .workspace-panel {
-        padding: 20px 16px;
     }
     .workspace-controls h2 {
         font-size: 27px;
-    }
-    .drawing-toolbar {
-        gap: 5px;
-        padding: 9px;
     }
     .brush-control input {
         width: 55px;
@@ -2268,9 +2205,6 @@ body:has(.preview-shell) .nav-links a[href$='#draw'] .icon {
     .preview-shell {
         padding-top: 23px;
     }
-    .drawing-toolbar {
-        gap: 8px;
-    }
     .drawing-toolbar .brush-control {
         flex: 1;
     }
@@ -2280,7 +2214,6 @@ body:has(.preview-shell) .nav-links a[href$='#draw'] .icon {
     }
     .studio-preview {
         position: static;
-        padding: 15px;
     }
     .workspace-tabs button {
         font-size: 11px;
@@ -2509,9 +2442,6 @@ body:has(.preview-shell) .nav-links a[href$='#draw'] .icon {
     overflow-wrap: anywhere;
 }
 @media (max-width: 760px) {
-    .daily-composer textarea {
-        font-size: 22px;
-    }
     .daily-compose-footer > span {
         font-size: 10px;
     }
@@ -3039,9 +2969,6 @@ body:has(.preview-shell) .nav-links a[href$='#draw'] .icon {
     .collection-tile h2 {
         font-size: 22px;
     }
-    .collection-dialog {
-        padding: 29px 23px;
-    }
     .collection-dialog h2 {
         font-size: 28px;
     }
@@ -3090,7 +3017,6 @@ body:has(.preview-shell) .nav-links a[href$='#draw'] .icon {
     > :is(.preview-post, .quote-card) {
     display: flex;
     flex-direction: column;
-    gap: 15px;
     min-width: 0;
 }
 :is(#my-quotes-list, #collection-quotes, #saved-quotes-list, #studio-card-preview, #quote-grid)
@@ -3105,25 +3031,18 @@ body:has(.preview-shell) .nav-links a[href$='#draw'] .icon {
     flex-direction: column;
     align-items: stretch;
     justify-content: center;
-    gap: 14px;
-    height: 320px;
-    min-height: 320px;
-    max-height: 320px;
     min-width: 0;
 }
 :is(#my-quotes-list, #collection-quotes, #saved-quotes-list, #studio-card-preview, #quote-grid)
     .my-quote-body
     :is(.preview-post-text, .quote-card-text) {
     margin: 0;
-    font-size: 26px;
-    line-height: 1.25;
 }
 :is(#my-quotes-list, #collection-quotes, #saved-quotes-list, #studio-card-preview, #quote-grid)
     .my-quote-body
     canvas {
     display: block;
     width: 100%;
-    height: 100%;
     min-height: 0;
     max-height: 100%;
     object-fit: contain;
@@ -3134,7 +3053,6 @@ body:has(.preview-shell) .nav-links a[href$='#draw'] .icon {
     .published-card-image {
     display: block;
     width: 100%;
-    height: 100%;
     max-height: 100%;
     object-fit: contain;
     margin: 0;
@@ -3160,10 +3078,7 @@ body:has(.preview-shell) .nav-links a[href$='#draw'] .icon {
 }
 :is(#my-quotes-list, #collection-quotes, #saved-quotes-list, #studio-card-preview, #quote-grid)
     .preview-post-actions {
-    margin-top: auto;
-    min-height: 44px;
     align-items: center;
-    padding-top: 10px;
 }
 @media (max-width: 760px) {
     :is(#my-quotes-list, #collection-quotes, #saved-quotes-list, #studio-card-preview, #quote-grid)
@@ -3208,14 +3123,12 @@ body:has(.preview-shell) .nav-links a[href$='#draw'] .icon {
 :is(#my-quotes-list, #collection-quotes, #saved-quotes-list, #studio-card-preview, #quote-grid)
     > :is(.preview-post, .quote-card) {
     padding: 17px 22px 15px;
-    min-height: 260px;
     gap: 10px;
     border-radius: 13px;
 }
 :is(#my-quotes-list, #collection-quotes, #saved-quotes-list, #studio-card-preview, #quote-grid)
     .my-quote-body {
     height: auto;
-    min-height: 130px;
     max-height: none;
     flex: 1;
     gap: 8px;
@@ -3314,45 +3227,26 @@ body:has(.preview-shell) .nav-links a[href$='#draw'] .icon {
 /* Finished designs are the card itself, with controls outside the artwork. */
 :is(#my-quotes-list, #collection-quotes, #saved-quotes-list, #studio-card-preview, #quote-grid)
     > :has(> .my-quote-body[data-layout='designed']) {
-    padding: 0;
-    background: var(--ivory);
-    color: var(--black);
-    gap: 10px;
     overflow: hidden;
     justify-content: flex-start;
 }
 :is(#my-quotes-list, #collection-quotes, #saved-quotes-list, #studio-card-preview, #quote-grid)
     .my-quote-body[data-layout='designed'] {
-    order: -1;
     flex: 0 0 auto;
-    width: 100%;
-    height: auto;
-    min-height: 0;
     max-height: none;
-    display: block;
 }
 :is(#my-quotes-list, #collection-quotes, #saved-quotes-list, #studio-card-preview, #quote-grid)
     .my-quote-body[data-layout='designed']
     .published-card-image {
     display: block;
-    width: 100%;
-    height: auto;
     max-height: none;
     aspect-ratio: 5/6;
-    object-fit: contain;
-    border-radius: 0;
-    margin: 0;
 }
 :is(#my-quotes-list, #collection-quotes, #saved-quotes-list, #studio-card-preview, #quote-grid)
     > :has(> .my-quote-body[data-layout='designed'])
     > :not(.my-quote-body) {
     margin-left: 12px;
     margin-right: 12px;
-}
-:is(#my-quotes-list, #collection-quotes, #saved-quotes-list, #studio-card-preview, #quote-grid)
-    > :has(> .my-quote-body[data-layout='designed'])
-    > :last-child {
-    margin-bottom: 12px;
 }
 :is(#my-quotes-list, #collection-quotes, #saved-quotes-list, #studio-card-preview, #quote-grid)
     > :has(> .my-quote-body[data-layout='designed'])
@@ -3619,10 +3513,6 @@ body:has(.preview-shell) .nav-links a[href$='#draw'] .icon {
 @media (max-width: 760px) {
     #quote-grid {
         grid-auto-columns: calc((100% - 14px) / 2);
-        gap: 14px;
-    }
-    #quote-grid.expanded {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 }
 
@@ -3745,7 +3635,6 @@ textarea {
     .mobile-nav:not([hidden]) {
         display: grid;
         grid-template-columns: 1fr 1fr;
-        gap: 4px 12px;
     }
     .mobile-nav a,
     .mobile-nav button {
@@ -3935,17 +3824,10 @@ textarea {
     }
 
     :is(#my-quotes-list, #collection-quotes, #saved-quotes-list) {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
         justify-items: stretch;
-        gap: 12px;
     }
     :is(#my-quotes-list, #collection-quotes, #saved-quotes-list) > article {
         width: 100%;
-        max-width: 320px;
-    }
-    :is(#my-quotes-list, #collection-quotes, #saved-quotes-list) .icon-button {
-        min-width: 34px;
-        min-height: 34px;
     }
     .collection-dialog {
         width: calc(100% - 28px);
@@ -3976,10 +3858,6 @@ textarea {
 }
 
 @media (max-width: 480px) {
-    .nav-shell {
-        padding-inline: 18px;
-        gap: 12px 10px;
-    }
     .nav-shell .brand {
         width: 130px;
     }
