@@ -289,9 +289,6 @@ function applyDesign(design) {
         .forEach((b) =>
             b.setAttribute('aria-pressed', String(b.dataset.template === selectedTemplate)),
         );
-    document
-        .querySelectorAll('[data-align]')
-        .forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.align === alignment)));
 }
 function usePost(post) {
     $('studio-source').value = post.id;
@@ -442,9 +439,6 @@ function resetStudio() {
     $('studio-position').value = 'middle';
     alignment = 'center';
     document
-        .querySelectorAll('[data-align]')
-        .forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.align === 'center')));
-    document
         .querySelectorAll('[data-template]')
         .forEach((b) =>
             b.setAttribute('aria-pressed', String(b.dataset.template === selectedTemplate)),
@@ -459,16 +453,6 @@ for (const id of [
     ...Object.values(layerInputs),
 ])
     $(id).addEventListener('input', renderCard);
-document.querySelectorAll('[data-align]').forEach(
-    (b) =>
-        (b.onclick = () => {
-            alignment = b.dataset.align;
-            document
-                .querySelectorAll('[data-align]')
-                .forEach((other) => other.setAttribute('aria-pressed', String(other === b)));
-            renderCard();
-        }),
-);
 document.querySelectorAll('[data-template]').forEach((button) => {
     renderTemplateThumbnail(button);
     button.onclick = () => {

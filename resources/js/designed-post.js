@@ -7,7 +7,7 @@ export function showDesignedPost(article, body, post) {
     article.style.backgroundColor = solidTemplates[design.template] || '#F5F2ED';
     if (templateAssets[design.template])
         article.style.backgroundImage = `url('${templateAssets[design.template]}')`;
-    article.style.color = design.color || '#151515';
+    article.style.color = design.template === 'plain-black' ? '#f5f2ed' : '#151515';
     body.replaceChildren();
     if (post.cardImage) {
         const original = document.createElement('img');
@@ -28,6 +28,7 @@ export function showDesignedPost(article, body, post) {
         const text = document.createElement('p');
         text.className = 'preview-post-text';
         text.textContent = post.text;
+        text.style.color = design.color || '#151515';
         text.style.fontFamily = design.font || 'Georgia';
         text.style.fontSize = Math.max(18, Math.min(28, Number(design.size || 64) / 3)) + 'px';
         text.dataset.preferredSize = parseFloat(text.style.fontSize);

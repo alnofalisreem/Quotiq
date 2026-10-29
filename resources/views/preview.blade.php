@@ -122,12 +122,6 @@
                     </label>
                     <input id="studio-size" type="range" min="32" max="80"
                         value="64">
-                    <fieldset class="alignment-controls">
-                        <legend class="control-label">Alignment</legend>
-                        <button data-align="left" aria-pressed="false">Left</button>
-                        <button data-align="center" aria-pressed="true">Center</button>
-                        <button data-align="right" aria-pressed="false">Right</button>
-                    </fieldset>
                     <select id="studio-position" hidden aria-hidden="true">
                         <option value="top">Top</option>
                         <option value="middle" selected>Middle</option>
