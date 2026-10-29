@@ -128,7 +128,7 @@
                         <input id="text-x" type="range" min="0" max="100" value="50">
                         <label for="text-y">Up / down</label>
                         <input id="text-y" type="range" min="0" max="100" value="35">
-                        <label class="control-label" for="studio-size">Text size <output
+                        <label class="control-label" for="studio-size">Size <output
                                 id="size-output">64</output>
                         </label>
                         <input id="studio-size" type="range" min="32" max="80"
