@@ -238,7 +238,7 @@ $('publish-preview').onclick = async () => {
         $('drawing-editor').hidden = true;
         $('drawing-placeholder').hidden = false;
         $('open-drawing').querySelector('span').textContent = 'Add a drawing';
-        button.textContent = 'Publish quote →';
+        button.textContent = 'Publish quote';
         showPanel('posts');
     } catch (error) {
         posts = JSON.parse(store.getItem(storageKey) || '[]');
@@ -519,7 +519,7 @@ if (existing && requestedEdit) {
     redraw();
     $('drawing-editor').hidden = !drawing_data.length;
     $('drawing-placeholder').hidden = !!drawing_data.length;
-    $('publish-preview').textContent = 'Save changes →';
+    $('publish-preview').textContent = 'Save changes';
     showPanel('draw');
 } else if (existing && requestedPost) {
     usePost(existing);
