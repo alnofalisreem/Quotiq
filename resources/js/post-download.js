@@ -31,6 +31,48 @@ function announce(message) {
     status.hideTimer = setTimeout(() => status.remove(), 5000);
 }
 
+export async function capturePost(post) {
+    await document.fonts.ready;
+    await Promise.all([...post.querySelectorAll('img')].map((img) => img.decode()));
+    const captured = await html2canvas(post, {
+        scale: 2,
+        backgroundColor: null,
+        useCORS: true,
+        logging: false,
+        ignoreElements: (element) => element.hasAttribute('data-export-ignore'),
+        onclone: (_document, element) => {
+            element.style.transform = 'none';
+            element.style.width = '224px';
+            element.style.height = '226px';
+            element.style.minHeight = '226px';
+            element.style.boxSizing = 'border-box';
+            const body = element.querySelector('.my-quote-body');
+            const text = body?.querySelector('p');
+            if (text) {
+                let size = parseFloat(_document.defaultView.getComputedStyle(text).fontSize);
+                while (
+                    (text.style.position === 'absolute'
+                        ? text.scrollHeight > body.clientHeight * 0.45
+                        : body.scrollHeight > body.clientHeight + 1) && size > 11
+                ) {
+                    size -= 0.5;
+                    text.style.fontSize = size + 'px';
+                }
+            }
+            element
+                .querySelectorAll('.quote-card-top [data-social], .quote-card-bottom button')
+                .forEach((button) => button.remove());
+            for (let parent = element.parentElement; parent; parent = parent.parentElement)
+                parent.style.overflow = 'visible';
+        },
+    });
+    const canvas = document.createElement('canvas');
+    canvas.width = 448;
+    canvas.height = 452;
+    canvas.getContext('2d').drawImage(captured, 0, 0);
+    return canvas;
+}
+
 export async function downloadPost(post, button) {
     if (!canDownloadPosts()) {
         requestAccount();
@@ -40,40 +82,7 @@ export async function downloadPost(post, button) {
     button.disabled = true;
     button.setAttribute('aria-busy', 'true');
     try {
-        await document.fonts.ready;
-        await Promise.all([...post.querySelectorAll('img')].map((img) => img.decode()));
-        const captured = await html2canvas(post, {
-            scale: 2,
-            backgroundColor: null,
-            useCORS: true,
-            logging: false,
-            ignoreElements: (element) => element.hasAttribute('data-export-ignore'),
-            onclone: (_document, element) => {
-                element.style.transform = 'none';
-                element.style.width = '224px';
-                element.style.height = '226px';
-                element.style.minHeight = '226px';
-                element.style.boxSizing = 'border-box';
-                const body = element.querySelector('.my-quote-body');
-                const text = body?.querySelector('p');
-                if (text) {
-                    let size = parseFloat(_document.defaultView.getComputedStyle(text).fontSize);
-                    while (body.scrollHeight > body.clientHeight + 1 && size > 11) {
-                        size -= 0.5;
-                        text.style.fontSize = size + 'px';
-                    }
-                }
-                element
-                    .querySelectorAll('.quote-card-top [data-social], .quote-card-bottom button')
-                    .forEach((button) => button.remove());
-                for (let parent = element.parentElement; parent; parent = parent.parentElement)
-                    parent.style.overflow = 'visible';
-            },
-        });
-        const canvas = document.createElement('canvas');
-        canvas.width = 448;
-        canvas.height = 452;
-        canvas.getContext('2d').drawImage(captured, 0, 0);
+        const canvas = await capturePost(post);
         const blob = await new Promise((resolve) => canvas.toBlob(resolve, 'image/png'));
         if (!blob) throw new Error('Image generation failed');
         const url = URL.createObjectURL(blob);

@@ -46,7 +46,7 @@ class QuoteRequest extends FormRequest
                 'max:600000',
                 'regex:~^data:image/(?:png|jpeg);base64,[A-Za-z0-9+/=]+$~',
             ],
-            'design' => ['nullable', 'array:template,color,font,size,position,alignment'],
+            'design' => ['nullable', 'array:template,color,font,size,position,alignment,layout'],
             'design.template' => [
                 'required_with:design',
                 Rule::in([
@@ -71,6 +71,12 @@ class QuoteRequest extends FormRequest
             'design.size' => ['required_with:design', 'numeric', 'between:32,80'],
             'design.position' => ['required_with:design', Rule::in(['top', 'middle', 'bottom'])],
             'design.alignment' => ['required_with:design', Rule::in(['left', 'center', 'right'])],
+            'design.layout' => ['sometimes', 'array:textX,textY,drawingX,drawingY,drawingScale'],
+            'design.layout.textX' => ['required_with:design.layout', 'numeric', 'between:0,100'],
+            'design.layout.textY' => ['required_with:design.layout', 'numeric', 'between:0,100'],
+            'design.layout.drawingX' => ['required_with:design.layout', 'numeric', 'between:0,100'],
+            'design.layout.drawingY' => ['required_with:design.layout', 'numeric', 'between:0,100'],
+            'design.layout.drawingScale' => ['required_with:design.layout', 'numeric', 'between:25,100'],
         ];
     }
 

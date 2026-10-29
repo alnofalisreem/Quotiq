@@ -4251,3 +4251,25 @@ textarea {
         padding-inline: 16px;
     }
 }
+
+.layer-controls {
+    display: grid;
+    gap: 10px;
+    min-width: 0;
+    margin: 20px 0;
+    padding: 16px;
+    border: 1px solid #ffffff30;
+    border-radius: 12px;
+}
+.layer-controls[hidden] {
+    display: none;
+}
+.layer-controls label {
+    font-size: 13px;
+    color: var(--ivory);
+}
+.layer-controls input[type='range'] {
+    width: 100%;
+    min-height: 30px;
+    accent-color: var(--orange);
+}

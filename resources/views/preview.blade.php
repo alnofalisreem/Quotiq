@@ -128,13 +128,27 @@
                         <button data-align="center" aria-pressed="true">Center</button>
                         <button data-align="right" aria-pressed="false">Right</button>
                     </fieldset>
-                    <label class="control-label" for="studio-position">Text
-                        position</label>
-                    <select id="studio-position">
+                    <select id="studio-position" hidden aria-hidden="true">
                         <option value="top">Top</option>
                         <option value="middle" selected>Middle</option>
                         <option value="bottom">Bottom</option>
                     </select>
+                    <fieldset class="layer-controls" id="text-layout-controls">
+                        <legend class="control-label">Text position</legend>
+                        <label for="text-x">Left / right</label>
+                        <input id="text-x" type="range" min="0" max="100" value="50">
+                        <label for="text-y">Up / down</label>
+                        <input id="text-y" type="range" min="0" max="100" value="35">
+                    </fieldset>
+                    <fieldset class="layer-controls" id="drawing-layout-controls" hidden>
+                        <legend class="control-label">Drawing</legend>
+                        <label for="drawing-x">Left / right</label>
+                        <input id="drawing-x" type="range" min="0" max="100" value="50">
+                        <label for="drawing-y">Up / down</label>
+                        <input id="drawing-y" type="range" min="0" max="100" value="72">
+                        <label for="drawing-scale">Size</label>
+                        <input id="drawing-scale" type="range" min="25" max="100" value="65">
+                    </fieldset>
                     <div class="studio-buttons">
                         <button id="studio-reset" class="button button-outline">Reset</button>
                         <button id="studio-download" class="button button-primary">

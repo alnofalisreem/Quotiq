@@ -248,6 +248,30 @@ $('publish-preview').onclick = async () => {
         button.disabled = false;
     }
 };
+const layerDefaults = {
+    textX: 50,
+    textY: 35,
+    drawingX: 50,
+    drawingY: 72,
+    drawingScale: 65,
+};
+const layerInputs = {
+    textX: 'text-x',
+    textY: 'text-y',
+    drawingX: 'drawing-x',
+    drawingY: 'drawing-y',
+    drawingScale: 'drawing-scale',
+};
+function applyLayout(layout = layerDefaults) {
+    for (const [key, id] of Object.entries(layerInputs)) {
+        $(id).value = layout[key] ?? layerDefaults[key];
+    }
+}
+function currentLayout() {
+    return Object.fromEntries(
+        Object.entries(layerInputs).map(([key, id]) => [key, Number($(id).value)]),
+    );
+}
 function applyDesign(design) {
     if (!design) return;
     selectedTemplate = design.template;
@@ -256,6 +280,10 @@ function applyDesign(design) {
     $('studio-size').value = design.size;
     $('studio-position').value = design.position;
     alignment = design.alignment;
+    applyLayout(design.layout || {
+        ...layerDefaults,
+        textY: design.position === 'top' ? 20 : design.position === 'bottom' ? 80 : 50,
+    });
     document
         .querySelectorAll('[data-template]')
         .forEach((b) =>
@@ -340,6 +368,7 @@ function currentDesignedPost() {
             size: $('studio-size').value,
             position: $('studio-position').value,
             alignment,
+            layout: currentLayout(),
         },
     };
 }
@@ -397,12 +426,15 @@ function renderCard() {
         c.fillText('— ' + author, 500, include ? 1090 : Math.min(1000, y + blockHeight + 50), 620);
     c.globalAlpha = 1;
     refreshCardPreview();
+    $('text-layout-controls').hidden = !text;
+    $('drawing-layout-controls').hidden = !include;
     $('size-output').textContent = $('studio-size').value;
     $('studio-download').disabled = !templateReady(selectedTemplate);
     $('publish-card').disabled = !templateReady(selectedTemplate);
     $('studio-status').textContent = templateReady(selectedTemplate) ? '' : 'Loading template…';
 }
 function resetStudio() {
+    applyLayout();
     selectedTemplate = 'botanical';
     $('studio-color').value = '#493b31';
     $('studio-font').value = 'Georgia';
@@ -419,7 +451,13 @@ function resetStudio() {
         );
     renderCard();
 }
-for (const id of ['studio-color', 'studio-font', 'studio-size', 'studio-position'])
+for (const id of [
+    'studio-color',
+    'studio-font',
+    'studio-size',
+    'studio-position',
+    ...Object.values(layerInputs),
+])
     $(id).addEventListener('input', renderCard);
 document.querySelectorAll('[data-align]').forEach(
     (b) =>
@@ -544,10 +582,8 @@ $('publish-card').onclick = async () => {
     try {
         const category = await classifyQuote(text, studioDrawing.length > 0);
         const old = posts.find((p) => p.id === $('studio-source').value);
-        const thumbnail = document.createElement('canvas');
-        thumbnail.width = 400;
-        thumbnail.height = 480;
-        thumbnail.getContext('2d').drawImage(card, 0, 0, 400, 480);
+        const { capturePost } = await import('./post-download.js');
+        const thumbnail = await capturePost($('studio-card-preview').firstElementChild);
         const post = {
             id: old?.id || crypto.randomUUID(),
             text,
@@ -562,6 +598,7 @@ $('publish-card').onclick = async () => {
                 size: $('studio-size').value,
                 position: $('studio-position').value,
                 alignment,
+                layout: currentLayout(),
             },
         };
         const next = old ? posts.map((p) => (p.id === old.id ? post : p)) : [post, ...posts];

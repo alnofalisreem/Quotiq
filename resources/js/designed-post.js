@@ -40,12 +40,52 @@ export function showDesignedPost(article, body, post) {
         paintDrawing(canvas, post.drawing_data);
         body.append(canvas);
     }
+    // New cards position their text and drawing independently. Older cards keep their layout.
+    if (design.layout) {
+        const layout = design.layout;
+        body.style.position = 'relative';
+        body.style.overflow = 'hidden';
+        const text = body.querySelector('p');
+        const drawing = body.querySelector('canvas');
+        if (text) {
+            Object.assign(text.style, {
+                position: 'absolute',
+                left: `clamp(40%, ${layout.textX}%, 60%)`,
+                top: `clamp(22.5%, ${layout.textY}%, 77.5%)`,
+                transform: 'translate(-50%, -50%)',
+                width: '80%',
+                maxHeight: 'none',
+                margin: '0',
+                overflow: 'visible',
+            });
+        }
+        if (drawing) {
+            const size = Number(layout.drawingScale);
+            const height = size * 0.65;
+            Object.assign(drawing.style, {
+                position: 'absolute',
+                left: `clamp(${size / 2}%, ${layout.drawingX}%, ${100 - size / 2}%)`,
+                top: `clamp(${height / 2}%, ${layout.drawingY}%, ${100 - height / 2}%)`,
+                transform: 'translate(-50%, -50%)',
+                width: `${size}%`,
+                height: `${height}%`,
+                maxWidth: 'none',
+                maxHeight: 'none',
+                objectFit: 'contain',
+                margin: '0',
+            });
+        }
+    }
     const fit = () => {
         const text = body.querySelector('p');
         if (!text || !body.clientHeight) return;
         let size = Number(text.dataset.preferredSize);
         text.style.fontSize = size + 'px';
-        while (body.scrollHeight > body.clientHeight + 1 && size > 11) {
+        while (
+            (design.layout
+                ? text.scrollHeight > body.clientHeight * 0.45
+                : body.scrollHeight > body.clientHeight + 1) && size > 11
+        ) {
             size -= 0.5;
             text.style.fontSize = size + 'px';
         }
