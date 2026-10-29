@@ -1890,7 +1890,7 @@ body:has(.account-screen) #mobile-nav a[href$='/signup'] {
         width: 44px;
         height: 44px;
         padding: 5px;
-        border: 2px solid var(--ivory);
+        border: 2px solid #ffffff;
         border-radius: 8px;
         background: #292929;
     }
