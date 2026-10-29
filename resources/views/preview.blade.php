@@ -25,11 +25,9 @@
                         <x-icon name="pen" /><span>Add a
                             drawing</span>
                     </button>
-                    <button class="button button-outline" id="continue-to-studio">Design card <x-icon
-                            name="arrow" />
+                    <button class="button button-outline" id="continue-to-studio">Design card
                     </button>
-                    <button class="button button-primary" id="publish-preview">Publish quote <x-icon
-                            name="arrow" />
+                    <button class="button button-primary" id="publish-preview">Publish quote
                     </button>
                     <p id="publish-status" role="status" class="workspace-status">
                     </p>
@@ -149,8 +147,7 @@
                             <x-icon name="download" /> Download
                             PNG</button>
                     </div>
-                    <button class="button button-primary" id="publish-card">Publish card <x-icon
-                            name="arrow" />
+                    <button class="button button-primary" id="publish-card">Publish card
                     </button>
                     <p id="studio-status" class="workspace-status" role="status">
                     </p>
@@ -163,6 +160,5 @@
             </div>
         </section>
     </div>
-    <a href="#draw" class="create-quote-fab" aria-label="Create a quote">+</a>
     @vite('resources/js/preview.js')
 @endsection

@@ -82,7 +82,7 @@
                     </div>
                 </div>
                 <button type="submit" class="account-submit">
-                    {{ $isSignup ? 'Create account' : 'Log in' }} <x-icon name="arrow" />
+                    {{ $isSignup ? 'Create account' : 'Log in' }}
                 </button>
                 <p class="account-switch">
                     @if ($isSignup)

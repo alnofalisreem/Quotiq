@@ -537,13 +537,6 @@ p {
     border: 0;
     padding: 6px 0;
 }
-#view-all .icon {
-    width: 21px;
-    height: 21px;
-}
-#view-all[aria-expanded='true'] .icon {
-    transform: rotate(-90deg);
-}
 .filter-row {
     display: flex;
     align-items: center;
@@ -2047,7 +2040,7 @@ body:has(.account-screen) #mobile-nav a[href$='/signup'] {
 }
 .preview-post-actions .text-button {
     font-size: 11px;
-    color: var(--red);
+    color: #151515;
 }
 body:has(.preview-shell) .account-links {
     visibility: hidden;
@@ -3397,7 +3390,7 @@ body:has(.preview-shell) .nav-links a[href$='#draw'] .icon {
 :is(#my-quotes-list, #collection-quotes, #saved-quotes-list, #studio-card-preview, #quote-grid)
     > .designed-quote:has(> .my-quote-body[data-layout='designed'])
     .text-button {
-    color: var(--red);
+    color: #151515;
 }
 @media (max-width: 760px) {
     :is(#my-quotes-list, #collection-quotes, #saved-quotes-list, #studio-card-preview, #quote-grid)
