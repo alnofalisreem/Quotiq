@@ -34,6 +34,7 @@ function announce(message) {
 export async function capturePost(post) {
     await document.fonts.ready;
     await Promise.all([...post.querySelectorAll('img')].map((img) => img.decode()));
+    const backgroundColor = getComputedStyle(post).backgroundColor;
     const captured = await html2canvas(post, {
         scale: 2,
         backgroundColor: null,
@@ -46,6 +47,11 @@ export async function capturePost(post) {
             element.style.height = '226px';
             element.style.minHeight = '226px';
             element.style.boxSizing = 'border-box';
+            if (element.classList.contains('golden-quote')) {
+                element.style.backgroundColor = backgroundColor;
+                element.style.border = '3px solid #b58a38';
+                element.style.boxShadow = 'none';
+            }
             const body = element.querySelector('.my-quote-body');
             const text = body?.querySelector('p');
             if (text) {
